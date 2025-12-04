@@ -1,0 +1,12 @@
+{
+	"version": "1.0",
+	"label": "files",
+	"classes": ["files"],
+	"paths": ["files"],
+	"services": ["files"],
+	"architecture": {"engine": "starlark", "version": 2},
+	"execute": ["files.star"],
+	"actions": {
+		"": {"function": "action_serve", "public": true}
+	}
+}
