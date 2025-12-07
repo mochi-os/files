@@ -10,6 +10,11 @@ def action_serve(a):
         a.error(400, "This app requires domain routing configuration")
         return
 
+    # Validate site is safe (alphanumeric, underscores, hyphens only)
+    if not site.replace("_", "").replace("-", "").isalnum():
+        a.error(400, "Invalid site configuration")
+        return
+
     # Remainder is the file path after the route prefix
     path = a.domain.route.remainder
     if not path:
