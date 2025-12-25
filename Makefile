@@ -13,3 +13,4 @@ zip:
 	mkdir -p $(BUILD)
 	rm -f $(BUILD)/$(APP)_*.zip
 	zip -r $(BUILD)/$(APP)_$(VERSION).zip app.json *.star labels
+	git tag -a $(VERSION) -m "$(VERSION)"
