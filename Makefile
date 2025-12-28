@@ -12,7 +12,7 @@ clean:
 release:
 	rm -f $(RELEASE)/$(APP)_*.zip
 	zip -r $(RELEASE)/$(APP)_$(VERSION).zip app.json *.star labels
-	git tag -a $(VERSION) -m "$(VERSION)"
+	git tag -a $(VERSION) -m "$(VERSION)" 2>/dev/null || true
 
 deploy:
 	../../test/claude/deploy.sh $(APP)
