@@ -4,14 +4,11 @@
 
 def action_serve(a):
     """Serve static files based on domain route context"""
-    # Context specifies the site subdirectory (e.g., "apt", "docs")
+    # Context specifies an optional site subdirectory (e.g., "apt", "docs")
     site = a.domain.route.context
-    if not site:
-        a.error(400, "This app requires domain routing configuration")
-        return
 
     # Validate site is safe (alphanumeric, underscores, hyphens only)
-    if not site.replace("_", "").replace("-", "").isalnum():
+    if site and not site.replace("_", "").replace("-", "").isalnum():
         a.error(400, "Invalid site configuration")
         return
 
@@ -20,5 +17,7 @@ def action_serve(a):
     if not path:
         path = "index.html"
 
-    # Serve from files/{site}/{path}
-    a.write_from_file(site + "/" + path)
+    # Serve from files/{site}/{path} or files/{path}
+    if site:
+        path = site + "/" + path
+    a.write_from_file(path)
