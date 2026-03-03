@@ -1,6 +1,6 @@
 # Mochi File Server app
 # Serves static files from the files/ data directory
-# Copyright Alistair Cunningham 2025
+# Copyright Alistair Cunningham 2025-2026
 
 def action_serve(a):
     """Serve static files based on domain route context"""

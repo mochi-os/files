@@ -1,8 +1,8 @@
 // Mochi Files app
-// Copyright Alistair Cunningham 2025
+// Copyright Alistair Cunningham 2025-2026
 
 {
-	"version": "1.3",
+	"version": "1.4",
 	"label": "app_name",
 	"classes": ["files"],
 	"paths": ["files"],
