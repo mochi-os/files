@@ -3,7 +3,7 @@
 
 {
 	"version": "1.8",
-	"label": "app_name",
+	"label": "app.name",
 	"classes": ["files"],
 	"paths": ["files"],
 	"services": ["files"],
