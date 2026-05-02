@@ -9,7 +9,7 @@ def action_serve(a):
 
     # Validate site is safe (alphanumeric, underscores, hyphens only)
     if site and not site.replace("_", "").replace("-", "").isalnum():
-        a.error_label(400, "errors.invalid_site_configuration")
+        a.error.label(400, "errors.invalid_site_configuration")
         return
 
     # Remainder is the file path after the route prefix
