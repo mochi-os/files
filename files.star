@@ -20,4 +20,4 @@ def action_serve(a):
     # Serve from files/{site}/{path} or files/{path}
     if site:
         path = site + "/" + path
-    a.write_from_file(path)
+    a.write.file(path)
