@@ -7,8 +7,6 @@
 {
 	"version": "1.18",
 	"label": "app.name",
-	"classes": ["files"],
-	"paths": ["files"],
 	"services": ["files"],
 	"architecture": {"engine": "starlark", "version": 4},
 	"execute": ["files.star"],
