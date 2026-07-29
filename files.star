@@ -5,19 +5,6 @@
 # This file is part of Mochi, licensed under the GNU AGPL v3 with the
 # Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-# Characters a site subdirectory may use. Core accepts ASCII only in a file
-# path, so this list rather than isalnum(), which counts any Unicode letter and
-# so accepted a context that every later request failed on. Core also caps the
-# whole path, prefix included, and reports that itself.
-site_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-"
-
-def site_valid(site):
-    """Report whether a route context is usable as a path prefix"""
-    for i in range(len(site)):
-        if site[i] not in site_characters:
-            return False
-    return True
-
 def action_serve(a):
     """Serve static files based on domain route context"""
     # Only a request that arrived on a hosted domain may read the file store.
@@ -32,12 +19,13 @@ def action_serve(a):
         a.error.label(404, "errors.not_found")
         return
 
-    # Context specifies an optional site subdirectory (e.g., "apt", "docs")
+    # Context specifies an optional site subdirectory (e.g., "apt", "docs").
+    # Not re-validated here: the routing table is the server's, and the only two
+    # writes that set a context check it first. Checking it again meant keeping a
+    # copy of someone else's rule, which is how this app came to accept a context
+    # that every later request then failed on - isalnum() counts any Unicode
+    # letter, and the path the context is prepended to is ASCII only.
     site = route.context
-
-    if site and not site_valid(site):
-        a.error.label(400, "errors.invalid_site_configuration")
-        return
 
     # Remainder is the file path after the route prefix
     path = route.remainder
