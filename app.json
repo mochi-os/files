@@ -11,6 +11,6 @@
 	"architecture": {"engine": "starlark", "version": 4},
 	"execute": ["files.star"],
 	"actions": {
-		"": {"function": "action_serve", "public": true}
+		"": {"function": "action_serve", "public": true, "site": true}
 	}
 }
