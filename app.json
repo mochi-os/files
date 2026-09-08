@@ -7,7 +7,6 @@
 {
 	"version": "1.22",
 	"label": "app.name",
-	"services": ["files"],
 	"architecture": {"engine": "starlark", "version": 4},
 	"execute": ["files.star"],
 	"actions": {
